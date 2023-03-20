@@ -71,7 +71,8 @@ class Piece( var pos		   : Piece.Coord,// (x,y) - (0,0) is bottom-left corner & 
 			
 			case Piece.StraightFar =>
 				for (p <- pieces)
-					if ((minx < p.pos._1 && p.pos._1 < maxx && miny < p.pos._2 && p.pos._2 < maxy) ||
+					if ((minx < p.pos._1 && p.pos._1 < maxx && miny == p.pos._2 && p.pos._2 == maxy) ||
+					    (minx == p.pos._1 && p.pos._1 == maxx && miny < p.pos._2 && p.pos._2 < maxy) ||
 						(des == p.pos && this.isWhite == p.isWhite))
 						return true
 				false
@@ -95,7 +96,7 @@ class Piece( var pos		   : Piece.Coord,// (x,y) - (0,0) is bottom-left corner & 
 					return true
 				false
 			
-			case null => false
+			case null => true
 		}
 	}
 	
